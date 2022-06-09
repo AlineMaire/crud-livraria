@@ -47,4 +47,21 @@ class LivroController extends Controller
     $livro->save();
     return redirect("/livros/{$livro->id}");
    }
+
+   public function index(){
+
+        $livros = Livro::all();
+
+        return view('livros.index', [
+            'livros' => $livros
+
+    ]);
+    }
+
+    public function destroy(Livro $livro){
+
+        $livro->delete();
+        return redirect('livros');
+    }
+
 }
